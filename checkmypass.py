@@ -26,15 +26,17 @@ def pwnd_api_check(password):
     response = request_api_data(sha1password[:5])
     return get_password_leaks_count(response, sha1password[5:])
 
+
 def read_pass_txt(file):
     try:
-        txt= open(file,'r')
+        txt = open(file, 'r')
         for i in txt.readlines():
             yield i.strip()
     except FileNotFoundError:
         print('Enter the right file name')
     except Exception as err:
         print(f'Couldn`t open the file. Check the error: {err}')
+
 
 if __name__ == '__main__':
 
@@ -43,4 +45,3 @@ if __name__ == '__main__':
             print(f"{i} was found {a} times. Better consider to change your password")
         else:
             print(f'your password ({i}) is secure for now')
-
